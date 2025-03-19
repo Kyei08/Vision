@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s ease infinite;
+}
+
+/* You can add other global styles here as needed */
+
+/* Custom Twitter-like theme */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#15202b] text-white;
+}
+
+/* Override some default Tailwind classes if needed */
+a {
+  @apply text-[#1da1f2] hover:underline;
+}

@@ -1,0 +1,4 @@
+"scripts": {
+  "dev": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+  // ...other scripts
+}

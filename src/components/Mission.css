@@ -1,0 +1,21 @@
+.mission {
+    background-color: #fff;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    border: 2px solid #212121;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.mission h2 {
+    margin-bottom: 1rem;
+}

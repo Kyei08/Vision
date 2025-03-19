@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+main {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.colorContainer {
+    padding: 10px 20px;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    border: 5px solid #212121;
+    top: 5%;
+}
+.color {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.color:hover {
+    opacity: 70%;
+}
+.red {
+    background-color: #F44336;
+}
+.blue {
+    background-color: #2196F3;
+}
+.green {
+    background-color: #4CAF50;
+}
+.violet {
+    background-color: #9C27B0;
+}
+.orange {
+    background-color: #FF6F00;
+}
+.choosedColor {
+    position: absolute;
+    background-color: #212121;
+    border-radius: 100px;
+    padding: 5px 20px;
+    bottom: 6%;
+    color: red;
+}
+.choosedColor .colorText {
+    color: #424242;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.waves-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h1 {
+    color: #212121;
+    font-weight: 200;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.wave {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+}

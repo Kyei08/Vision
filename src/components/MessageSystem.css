@@ -1,0 +1,50 @@
+.message-system {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 400px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.message {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.message.sent {
+  background-color: #2962FF;
+  align-self: flex-end;
+}
+.message.received {
+  background-color: #444;
+  align-self: flex-start;
+}
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+}
+.input-area input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background: #121212;
+  color: #e0e0e0;
+}
+.input-area button {
+  background: #2962FF;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

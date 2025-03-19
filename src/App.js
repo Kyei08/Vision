@@ -1,63 +1,52 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import HomeFeed from './components/HomeFeed';
+import ProfilePage from './components/ProfilePage';
+import ChatRoom from './components/ChatRoom';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
 import './App.css';
 
-function TeamMemberCard({ member }) {
-  return (
-    <div className="team-member-card">
-      <img src={member.image} alt={member.name} className="member-logo" />
-      <h3>{member.name}</h3>
-      <p><strong>Role:</strong> {member.role}</p>
-      <p>{member.description}</p>
-    </div>
-  );
-}
+const App = () => {
+  // Global profile and userId.
+  const [profile, setProfile] = useState({
+    name: 'Your Name',
+    photo: 'https://via.placeholder.com/150',
+    followers: 240,
+    userId: 1
+  });
+  // View can be: 'home', 'profile', 'chat', 'analytics'
+  const [view, setView] = useState('home');
 
-function App() {
-  const teamMembers = [
-    {
-      name: "Alice Johnson",
-      role: "Frontend Developer",
-      description: "Expert in React, CSS, and UI animation.",
-      image: logo
-    },
-    {
-      name: "Bob Smith",
-      role: "Backend Developer",
-      description: "Loves working on APIs, security, and database management.",
-      image: logo
-    },
-    {
-      name: "Charlie Davis",
-      role: "Full Stack Developer",
-      description: "Skilled in both frontend and backend, passionate about solving complex problems.",
-      image: logo
-    }
-  ];
+  const handleProfileUpdate = (updatedData) => {
+    setProfile(prev => ({ ...prev, ...updatedData }));
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Vision Team Portfolio</h1>
-        <p>Welcome to our portfolio. Meet our team of innovative coders!</p>
+    <div className="app">
+      <header className="header">
+        <h1>Coder Community</h1>
+        <nav>
+          <button onClick={() => setView('home')}>Home</button>
+          <button onClick={() => setView('profile')}>Profile</button>
+          <button onClick={() => setView('chat')}>Chat Room</button>
+          <button onClick={() => setView('analytics')}>Analytics</button>
+        </nav>
       </header>
-      <main className="App-main">
-        <section className="about-us">
-          <h2>About Us</h2>
-          <p>
-            We are a community of enthusiastic developers dedicated to sharing ideas, coding together, and building amazing projects.
-          </p>
-        </section>
-        <section className="team-members">
-          <h2>Team Members</h2>
-          <div className="team-member-list">
-            {teamMembers.map((member, index) => (
-              <TeamMemberCard key={index} member={member} />
-            ))}
-          </div>
-        </section>
-      </main>
+      {view === 'home' && <HomeFeed />}
+      {view === 'profile' && (
+        <ProfilePage 
+          profile={profile} 
+          onProfileUpdate={handleProfileUpdate} 
+        />
+      )}
+      {view === 'chat' && <ChatRoom />}
+      {view === 'analytics' && (
+        <AnalyticsDashboard 
+          userId={profile.userId} 
+          userName={profile.name} 
+        />
+      )}
     </div>
   );
-}
+};
 
 export default App;

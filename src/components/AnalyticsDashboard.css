@@ -1,0 +1,28 @@
+.analytics-dashboard {
+  background: #1e1e1e;
+  padding: 1rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 10px;
+  text-align: center;
+}
+.analytics-dashboard h2 {
+  font-family: Tahoma, Arial, sans-serif;
+  margin-bottom: 1rem;
+}
+.analytics-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.card {
+  background-color: #2e2e2e;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+}

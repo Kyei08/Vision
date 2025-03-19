@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Picture Upload</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .profile-picture {
+      border: 3px solid #333;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-picture:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Popup menu styles */
+    .popup-menu {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .popup-menu.show {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .popup-option {
+      background-color: #333;
+      border: none;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-option:hover {
+      background-color: #555;
+    }
+
+    /* Camera modal styles */
+    .camera-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .camera-modal.active {
+      display: flex;
+    }
+
+    #cameraVideo {
+      width: 80%;
+      max-width: 400px;
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+
+    .camera-controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .camera-controls button {
+      background-color: #333;
+      border: none;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .camera-controls button:hover {
+      background-color: #555;
+    }
+
+    /* Mobile-friendly adjustments */
+    @media (max-width: 480px) {
+      .profile-picture {
+        width: 120px;
+        height: 120px;
+      }
+
+      #cameraVideo {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-picture" id="profilePicture">
+      <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profileImg" />
+    </div>
+  </div>
+
+  <!-- Pop-up Menu -->
+  <div class="popup-menu" id="popupMenu">
+    <button class="popup-option" data-option="photos">Photos</button>
+    <button class="popup-option" data-option="camera">Camera</button>
+    <button class="popup-option" data-option="files">Files</button>
+  </div>
+
+  <!-- Hidden File Inputs -->
+  <input type="file" id="fileInputPhotos" accept="image/*" style="display: none;" />
+  <input type="file" id="fileInputFiles" accept="image/*" style="display: none;" />
+
+  <!-- Camera Modal -->
+  <div class="camera-modal" id="cameraModal">
+    <video id="cameraVideo" autoplay></video>
+    <div class="camera-controls">
+      <button id="captureButton">Capture</button>
+      <button id="closeCamera">Close</button>
+    </div>
+    <!-- Hidden canvas to capture image -->
+    <canvas id="cameraCanvas" style="display: none;"></canvas>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const profilePicture = document.getElementById('profilePicture');
+      const profileImg = document.getElementById('profileImg');
+      const popupMenu = document.getElementById('popupMenu');
+      const fileInputPhotos = document.getElementById('fileInputPhotos');
+      const fileInputFiles = document.getElementById('fileInputFiles');
+      const cameraModal = document.getElementById('cameraModal');
+      const cameraVideo = document.getElementById('cameraVideo');
+      const captureButton = document.getElementById('captureButton');
+      const closeCamera = document.getElementById('closeCamera');
+      const cameraCanvas = document.getElementById('cameraCanvas');
+
+      // Show popup menu when profile picture is clicked.
+      profilePicture.addEventListener('click', (e) => {
+        e.stopPropagation();
+        popupMenu.classList.toggle('show');
+      });
+
+      // Hide popup menu if clicking outside.
+      document.addEventListener('click', (e) => {
+        if (!popupMenu.contains(e.target) && popupMenu.classList.contains('show')) {
+          popupMenu.classList.remove('show');
+        }
+      });
+
+      // Handle popup option click events.
+      popupMenu.querySelectorAll('.popup-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const option = btn.getAttribute('data-option');
+          popupMenu.classList.remove('show');
+
+          if (option === 'photos') {
+            fileInputPhotos.click();
+          }
+          if (option === 'files') {
+            fileInputFiles.click();
+          }
+          if (option === 'camera') {
+            openCamera();
+          }
+        });
+      });
+
+      // Update profile picture when a file is selected.
+      fileInputPhotos.addEventListener('change', (e) => {
+        handleFile(e);
+      });
+      fileInputFiles.addEventListener('change', (e) => {
+        handleFile(e);
+      });
+
+      function handleFile(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            profileImg.src = reader.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Open camera modal and start video
+      function openCamera() {
+        cameraModal.classList.add('active');
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+              cameraVideo.srcObject = stream;
+              cameraVideo.play();
+            })
+            .catch(err => {
+              console.error("Error accessing camera: ", err);
+              cameraModal.classList.remove('active');
+            });
+        }
+      }
+
+      // Capture image from video and update the profile picture.
+      captureButton.addEventListener('click', () => {
+        const context = cameraCanvas.getContext('2d');
+        cameraCanvas.width = cameraVideo.videoWidth;
+        cameraCanvas.height = cameraVideo.videoHeight;
+        context.drawImage(cameraVideo, 0, 0, cameraCanvas.width, cameraCanvas.height);
+        const dataUrl = cameraCanvas.toDataURL('image/png');
+        profileImg.src = dataUrl;
+        closeCameraStream();
+      });
+
+      // Close camera modal and stop video stream.
+      closeCamera.addEventListener('click', () => {
+        closeCameraStream();
+      });
+
+      function closeCameraStream() {
+        cameraModal.classList.remove('active');
+        if (cameraVideo.srcObject) {
+          cameraVideo.srcObject.getTracks().forEach(track => track.stop());
+          cameraVideo.srcObject = null;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
