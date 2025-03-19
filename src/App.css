@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
 .App-logo {
@@ -22,6 +24,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 40px 20px;
+  margin-bottom: 40px;
 }
 
 .App-link {
@@ -35,4 +39,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-main {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-us {
+  margin-bottom: 40px;
+}
+
+.team-members {
+  margin-bottom: 40px;
+}
+
+.team-member-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.team-member-card {
+  background: #f1f1f1;
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.member-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
 }
