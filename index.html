@@ -4,401 +4,548 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css" />
+  <!-- Fonts and Icons -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
   <style>
+    /* Global Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #333333;
+      --primary-color: #4a90e2;
+      --accent-color: #ff6f61;
+      --light-gray: #e0e0e0;
+    }
     body {
-      background-color: #f8f9fa;
-      color: #e0e0e0;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Open Sans", sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      line-height: 1.6;
     }
-
-    .profile-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
+    h1, h2, h3, h5 {
+      font-family: "Poppins", sans-serif;
     }
-
-    .profile-picture {
-      border: 3px solid #333;
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
+    /* Sticky Navbar */
+    .navbar {
+      background-color: var(--bg-color);
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.5s ease;
+    }
+    .navbar-brand, .nav-link {
+      font-weight: 600;
+      color: var(--text-color) !important;
+    }
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+    /* Dark Mode */
+    body.dark-mode {
+      --bg-color: #212529;
+      --text-color: #f8f9fa;
+    }
+    body.dark-mode .navbar,
+    body.dark-mode .footer {
+      background-color: #333;
+    }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
+        ),
+        url("https://via.placeholder.com/1600x600") no-repeat center center/cover;
+      color: #fff;
+      padding: 150px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 20px;
+    }
+    /* Section Spacing */
+    section {
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    /* Upload and Edit Section */
+    #uploadForm input,
+    #uploadForm button {
+      border-radius: 5px;
+    }
+    #uploadForm button {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    #uploadForm button:hover {
+      background-color: #357abd;
+      transform: translateY(-3px);
+    }
+    #uploadForm .form-control {
+      border: 1px solid var(--light-gray);
+    }
+    /* Projects Grid */
+    .project-card {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
       overflow: hidden;
-      cursor: pointer;
       transition: transform 0.3s ease;
+      background: #fff;
     }
-
-    .profile-picture:hover {
-      transform: scale(1.05);
+    .project-card:hover {
+      transform: translateY(-5px);
     }
-
-    .profile-picture img {
+    .project-card img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
     }
-
-    /* Popup menu styles */
-    .popup-menu {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) scale(0);
-      background-color: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 10px;
+    .project-card .card-body {
+      padding: 15px;
+    }
+    /* About Section */
+    .about-content {
       display: flex;
-      gap: 10px;
-      transition: transform 0.3s ease;
-      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
     }
-
-    .popup-menu.show {
-      transform: translateX(-50%) scale(1);
+    .about-image {
+      flex: 1 1 250px;
+      max-width: 250px;
     }
-
-    .popup-option {
-      background-color: #333;
-      border: none;
-      color: #e0e0e0;
-      padding: 10px 15px;
+    .about-image img {
+      width: 100%;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+    }
+    .about-text {
+      flex: 2 1 300px;
+    }
+    .skills {
+      margin-top: 20px;
+    }
+    .skill-bar {
+      background: var(--light-gray);
       border-radius: 5px;
-      cursor: pointer;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .skill-bar-inner {
+      height: 10px;
+      background: var(--primary-color);
+      width: 0;
+      transition: width 1s ease;
+    }
+    /* Contact Section */
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
       transition: background-color 0.3s ease;
     }
-
-    .popup-option:hover {
-      background-color: #555;
+    .contact-form button:hover {
+      background-color: #e0554f;
     }
-
-    /* Camera modal styles */
-    .camera-modal {
+    .social-icons a {
+      color: var(--text-color);
+      margin-right: 15px;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: var(--primary-color);
+    }
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    /* Loading Overlay */
+    .loading-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      flex-direction: column;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 2000;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
     }
-
-    .camera-modal.active {
-      display: flex;
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
-
-    #cameraVideo {
-      width: 80%;
-      max-width: 400px;
-      border: 2px solid #333;
-      border-radius: 8px;
-    }
-
-    .camera-controls {
-      margin-top: 20px;
-      display: flex;
-      gap: 20px;
-    }
-
-    .camera-controls button {
-      background-color: #333;
-      border: none;
-      color: #e0e0e0;
-      padding: 10px 15px;
-      border-radius: 5px;
+    /* Dark Mode Toggle Button */
+    .toggle-btn {
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
     }
-
-    .camera-controls button:hover {
-      background-color: #555;
+    .toggle-btn:hover {
+      transform: scale(1.2);
     }
-
-    /* Mobile-friendly adjustments */
-    @media (max-width: 480px) {
-      .profile-picture {
-        width: 120px;
-        height: 120px;
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInAnim 1s forwards;
+    }
+    @keyframes fadeInAnim {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-
-      #cameraVideo {
-        width: 90%;
-      }
-    }
-
-    .portfolio-header {
-      margin: 2rem 0;
-      text-align: center;
-    }
-
-    .card {
-      margin-bottom: 2rem;
-    }
-
-    .portfolio-item img {
-      max-width: 100%;
-      height: auto;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Portfolio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="spinner-border text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-user-astronaut"></i> YourName
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contactLink" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <button id="darkModeToggle" class="toggle-btn" title="Toggle Dark Mode">
+              &#9788;
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <div class="container">
-    <div class="portfolio-header">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Showcase your projects by uploading photos and editing their details.</p>
+  <!-- Hero Section -->
+  <header class="hero fade-in">
+    <div class="container">
+      <h1>Hi, I’m YourName</h1>
+      <p>A Passionate Web Developer</p>
     </div>
+  </header>
 
-    <div class="card">
-      <div class="card-header">
-        <h3>Upload and Edit Project</h3>
+  <!-- Upload and Edit Project Section -->
+  <section id="upload" class="fade-in">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Upload and Edit Project</h2>
+        <p>Manage your projects with ease.</p>
       </div>
-      <div class="card-body">
-        <form id="portfolioForm">
-          <div class="form-group">
-            <label for="projectName">Project Name:</label>
-            <input type="text" class="form-control" id="projectName" placeholder="Enter project name">
-          </div>
-          <div class="form-group">
-            <label for="projectImage">Upload Project Image:</label>
-            <input type="file" class="form-control-file" id="projectImage">
-          </div>
-          <div class="form-group">
-            <img id="previewImage" src="#" alt="Image Preview" style="display:none; max-width:300px;" />
-          </div>
-          <button type="submit" class="btn btn-primary">Save Project</button>
-        </form>
-      </div>
+      <form id="uploadForm" class="mx-auto" style="max-width: 500px;">
+        <div class="form-group">
+          <label for="projectName">Project Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="projectName"
+            placeholder="Enter project name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="projectImage">Upload Project Image:</label>
+          <input type="file" class="form-control-file" id="projectImage" />
+        </div>
+        <div class="form-group">
+          <img
+            id="previewImage"
+            src="#"
+            alt="Image Preview"
+            style="display: none; max-width: 100%; margin: auto;"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit">Save Project</button>
+        </div>
+      </form>
     </div>
+  </section>
 
-    <section id="projects">
-      <h2 class="mb-4">My Projects</h2>
+  <!-- Projects Section -->
+  <section id="projects" class="fade-in">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">My Projects</h2>
+      </div>
       <div class="row">
-        <div class="col-md-4 portfolio-item">
-          <div class="card">
-            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+        <!-- Example Project Card -->
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <img src="https://via.placeholder.com/350x200" alt="Project Image" />
             <div class="card-body">
               <h5 class="card-title">Project Title 1</h5>
               <p class="card-text">Short description of the project.</p>
+              <a href="#" class="btn btn-sm" style="background: var(--primary-color); color: #fff;">View Details</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 portfolio-item">
-          <div class="card">
-            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+        <!-- More Project Cards -->
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <img src="https://via.placeholder.com/350x200" alt="Project Image" />
             <div class="card-body">
               <h5 class="card-title">Project Title 2</h5>
               <p class="card-text">Short description of the project.</p>
+              <a href="#" class="btn btn-sm" style="background: var(--primary-color); color: #fff;">View Details</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 portfolio-item">
-          <div class="card">
-            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <img src="https://via.placeholder.com/350x200" alt="Project Image" />
             <div class="card-body">
               <h5 class="card-title">Project Title 3</h5>
               <p class="card-text">Short description of the project.</p>
+              <a href="#" class="btn btn-sm" style="background: var(--primary-color); color: #fff;">View Details</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="about" class="mt-5">
-      <h2 class="mb-4">About Me</h2>
-      <p>This section can include background information, skills, and other details sourced from your portfolio repository.</p>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="fade-in">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://via.placeholder.com/250" alt="Your Headshot" />
+        </div>
+        <div class="about-text">
+          <p>
+            Hi, I’m YourName, a passionate web developer with expertise in modern web technologies. I love designing intuitive user interfaces and delivering engaging user experiences.
+          </p>
+          <div class="skills">
+            <h5>My Skills</h5>
+            <div class="skill-bar">
+              <div class="skill-bar-inner" style="width: 85%;"></div>
+            </div>
+            <p>HTML/CSS — 85%</p>
+            <div class="skill-bar">
+              <div class="skill-bar-inner" style="width: 75%;"></div>
+            </div>
+            <p>JavaScript — 75%</p>
+          </div>
+          <a href="#contact" class="btn" style="background: var(--primary-color); color: #fff;">Let’s Work Together!</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="mt-5 mb-5">
-      <h2 class="mb-4">Contact</h2>
-      <p>Provide your contact information or a contact form here.</p>
-    </section>
-  </div>
+  <!-- Contact Section -->
+  <section id="contact" class="fade-in">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your Email" required />
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="col-md-6 mb-4">
+          <h5>Connect with Me</h5>
+          <div class="social-icons">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+          <!-- Optionally embed a map -->
+          <!-- <iframe src="https://www.google.com/maps/embed?..."></iframe> -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="profile-container">
-    <div class="profile-picture" id="profilePicture">
-      <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profileImg" />
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 YourName. All rights reserved.</p>
+      <a href="#top" class="btn btn-sm" style="background: var(--primary-color); color: #fff;">Back to Top</a>
+    </div>
+  </footer>
+
+  <!-- Contact Modal (Optional: if you want a modal popup for contact instead of scrolling) -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Provide your contact details or embed a contact form here.</p>
+          <ul>
+            <li>Email: example@example.com</li>
+            <li>Phone: 123-456-7890</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Pop-up Menu -->
-  <div class="popup-menu" id="popupMenu">
-    <button class="popup-option" data-option="photos">Photos</button>
-    <button class="popup-option" data-option="camera">Camera</button>
-    <button class="popup-option" data-option="files">Files</button>
-  </div>
-
-  <!-- Hidden File Inputs -->
-  <input type="file" id="fileInputPhotos" accept="image/*" style="display: none;" />
-  <input type="file" id="fileInputFiles" accept="image/*" style="display: none;" />
-
-  <!-- Camera Modal -->
-  <div class="camera-modal" id="cameraModal">
-    <video id="cameraVideo" autoplay></video>
-    <div class="camera-controls">
-      <button id="captureButton">Capture</button>
-      <button id="closeCamera">Close</button>
-    </div>
-    <!-- Hidden canvas to capture image -->
-    <canvas id="cameraCanvas" style="display: none;"></canvas>
-  </div>
-
+  <!-- Scripts -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const profilePicture = document.getElementById('profilePicture');
-      const profileImg = document.getElementById('profileImg');
-      const popupMenu = document.getElementById('popupMenu');
-      const fileInputPhotos = document.getElementById('fileInputPhotos');
-      const fileInputFiles = document.getElementById('fileInputFiles');
-      const cameraModal = document.getElementById('cameraModal');
-      const cameraVideo = document.getElementById('cameraVideo');
-      const captureButton = document.getElementById('captureButton');
-      const closeCamera = document.getElementById('closeCamera');
-      const cameraCanvas = document.getElementById('cameraCanvas');
-
-      // Show popup menu when profile picture is clicked.
-      profilePicture.addEventListener('click', (e) => {
-        e.stopPropagation();
-        popupMenu.classList.toggle('show');
-      });
-
-      // Hide popup menu if clicking outside.
-      document.addEventListener('click', (e) => {
-        if (!popupMenu.contains(e.target) && popupMenu.classList.contains('show')) {
-          popupMenu.classList.remove('show');
-        }
-      });
-
-      // Handle popup option click events.
-      popupMenu.querySelectorAll('.popup-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const option = btn.getAttribute('data-option');
-          popupMenu.classList.remove('show');
-
-          if (option === 'photos') {
-            fileInputPhotos.click();
-          }
-          if (option === 'files') {
-            fileInputFiles.click();
-          }
-          if (option === 'camera') {
-            openCamera();
-          }
-        });
-      });
-
-      // Update profile picture when a file is selected.
-      fileInputPhotos.addEventListener('change', (e) => {
-        handleFile(e);
-      });
-      fileInputFiles.addEventListener('change', (e) => {
-        handleFile(e);
-      });
-
-      function handleFile(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            profileImg.src = reader.result;
-          };
-          reader.readAsDataURL(file);
-        }
-      }
-
-      // Open camera modal and start video
-      function openCamera() {
-        cameraModal.classList.add('active');
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-          navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-              cameraVideo.srcObject = stream;
-              cameraVideo.play();
-            })
-            .catch(err => {
-              console.error("Error accessing camera: ", err);
-              cameraModal.classList.remove('active');
-            });
-        }
-      }
-
-      // Capture image from video and update the profile picture.
-      captureButton.addEventListener('click', () => {
-        const context = cameraCanvas.getContext('2d');
-        cameraCanvas.width = cameraVideo.videoWidth;
-        cameraCanvas.height = cameraVideo.videoHeight;
-        context.drawImage(cameraVideo, 0, 0, cameraCanvas.width, cameraCanvas.height);
-        const dataUrl = cameraCanvas.toDataURL('image/png');
-        profileImg.src = dataUrl;
-        closeCameraStream();
-      });
-
-      // Close camera modal and stop video stream.
-      closeCamera.addEventListener('click', () => {
-        closeCameraStream();
-      });
-
-      function closeCameraStream() {
-        cameraModal.classList.remove('active');
-        if (cameraVideo.srcObject) {
-          cameraVideo.srcObject.getTracks().forEach(track => track.stop());
-          cameraVideo.srcObject = null;
-        }
-      }
+    // Dark Mode Toggle
+    document.getElementById("darkModeToggle").addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+      this.innerHTML = document.body.classList.contains("dark-mode") ? "&#9790;" : "&#9788;";
     });
 
-    // Show image preview after selecting a file
-    document.getElementById('projectImage').addEventListener('change', function(event) {
-      var output = document.getElementById('previewImage');
+    // Image Preview for Upload
+    document.getElementById("projectImage").addEventListener("change", function (event) {
+      var output = document.getElementById("previewImage");
       var file = event.target.files[0];
-      if(file) {
+      if (file) {
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           output.src = e.target.result;
-          output.style.display = 'block';
-        }
+          output.style.display = "block";
+        };
         reader.readAsDataURL(file);
+      } else {
+        output.style.display = "none";
       }
     });
 
-    // Handle form submission to process project details
-    document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+    // Handle Upload Form Submission
+    document.getElementById("uploadForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      var projectName = document.getElementById('projectName').value;
-      // Optionally, add logic to upload the image and save details to a backend
+      var projectName = document.getElementById("projectName").value;
+      if (projectName.trim() === "") {
+        alert("Please enter a project name.");
+        return;
+      }
+      // TODO: Upload logic here e.g., API call
       alert("Project Submitted: " + projectName);
+    });
+
+    // Optional: Intercept Contact Link and show loading animation then modal instead of scrolling
+    document.getElementById("contactLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      var overlay = document.getElementById("loadingOverlay");
+      overlay.classList.add("active");
+      setTimeout(function () {
+        overlay.classList.remove("active");
+        // Uncomment the line below to show the modal instead of scrolling
+        // $('#contactModal').modal('show');
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      }, 2000);
+    });
+
+    // Animate skill bars on scroll
+    window.addEventListener("scroll", function () {
+      document.querySelectorAll(".skill-bar-inner").forEach(function (bar) {
+        bar.style.width = bar.getAttribute("style").split("width: ")[1];
+      });
     });
   </script>
 
+  <!-- Bootstrap and Dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  ></script>
 </body>
 </html>
