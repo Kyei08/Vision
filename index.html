@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Picture Upload</title>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css" />
   <style>
     * {
@@ -13,7 +14,7 @@
     }
 
     body {
-      background-color: #121212;
+      background-color: #f8f9fa;
       color: #e0e0e0;
       font-family: Arial, sans-serif;
       padding: 20px;
@@ -136,9 +137,111 @@
         width: 90%;
       }
     }
+
+    .portfolio-header {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .card {
+      margin-bottom: 2rem;
+    }
+
+    .portfolio-item img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Portfolio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="portfolio-header">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Showcase your projects by uploading photos and editing their details.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Upload and Edit Project</h3>
+      </div>
+      <div class="card-body">
+        <form id="portfolioForm">
+          <div class="form-group">
+            <label for="projectName">Project Name:</label>
+            <input type="text" class="form-control" id="projectName" placeholder="Enter project name">
+          </div>
+          <div class="form-group">
+            <label for="projectImage">Upload Project Image:</label>
+            <input type="file" class="form-control-file" id="projectImage">
+          </div>
+          <div class="form-group">
+            <img id="previewImage" src="#" alt="Image Preview" style="display:none; max-width:300px;" />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Project</button>
+        </form>
+      </div>
+    </div>
+
+    <section id="projects">
+      <h2 class="mb-4">My Projects</h2>
+      <div class="row">
+        <div class="col-md-4 portfolio-item">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+            <div class="card-body">
+              <h5 class="card-title">Project Title 1</h5>
+              <p class="card-text">Short description of the project.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+            <div class="card-body">
+              <h5 class="card-title">Project Title 2</h5>
+              <p class="card-text">Short description of the project.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <div class="card">
+            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+            <div class="card-body">
+              <h5 class="card-title">Project Title 3</h5>
+              <p class="card-text">Short description of the project.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="mt-5">
+      <h2 class="mb-4">About Me</h2>
+      <p>This section can include background information, skills, and other details sourced from your portfolio repository.</p>
+    </section>
+
+    <section id="contact" class="mt-5 mb-5">
+      <h2 class="mb-4">Contact</h2>
+      <p>Provide your contact information or a contact form here.</p>
+    </section>
+  </div>
+
   <div class="profile-container">
     <div class="profile-picture" id="profilePicture">
       <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profileImg" />
@@ -270,6 +373,32 @@
         }
       }
     });
+
+    // Show image preview after selecting a file
+    document.getElementById('projectImage').addEventListener('change', function(event) {
+      var output = document.getElementById('previewImage');
+      var file = event.target.files[0];
+      if(file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          output.src = e.target.result;
+          output.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Handle form submission to process project details
+    document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var projectName = document.getElementById('projectName').value;
+      // Optionally, add logic to upload the image and save details to a backend
+      alert("Project Submitted: " + projectName);
+    });
   </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
