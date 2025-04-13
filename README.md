@@ -1,3 +1,1 @@
-I've combined everyone's files
-Josh designed the Hero & Project page 
-Nazheen designed the About page 
+I've combined everyone's files . Josh designed the Hero & Project pages , Nahzeen designed the About page
