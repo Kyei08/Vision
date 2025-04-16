@@ -3,7 +3,7 @@
 
 ## 📄 `SECURITY.md`
 
-```markdown
+
 # 🔐 Security Policy
 
 ## Reporting a Vulnerability
