@@ -1,7 +1,7 @@
-```markdown
+
 # 🌐 Vision Company Website
 
-Welcome to the **Vision** company website repository. This project reflects our brand identity and mission —  
+Welcome to the **Vision** website repository. This project reflects our brand identity and mission —  
 **Innovation. Precision. Excellence.**
 
 ---
@@ -152,7 +152,3 @@ See [LICENSE](./LICENSE) for full terms. Contributors retain credit for their wo
 
 Let's create something exceptional together!
 ```
-
----
-
-You're good to paste this straight into your repo’s `README.md`. Let me know if you want a deployment guide or to integrate CI/CD next!
