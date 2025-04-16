@@ -1,7 +1,3 @@
-Of course! Here's the **entire `README.md`** file formatted and ready for you to **copy-paste directly** into your existing `README.md` file:
-
----
-
 ```markdown
 # 🌐 Vision Company Website
 
