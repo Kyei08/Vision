@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sidebar.style.opacity = "0";
     }
     const toggleButton = document.createElement("button");
-    toggleButton.innerHTML = '<img src="Compass.png" alt="Menu" class="icon-style"/>';
+    toggleButton.innerHTML = '<img src="img/Compass.png" alt="Menu" class="icon-style"/>';
     toggleButton.className = "toggle-button";
     toggleButton.style.background = "transparent";
     toggleButton.style.border = "none";
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Add page navigation functionality
 const pages = [
-    "Home.html",
+    "index.html",
     "water-ripple-background01.html",
     "Contact-section01.html"
 ];

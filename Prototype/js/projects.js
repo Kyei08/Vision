@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Page Navigation Functionality
     const pages = [
-        "Home.html",
+        "index.html",
         "projects.html",
         "water-ripple-background01.html",
         "Contact-section01.html"
@@ -97,4 +97,59 @@ document.addEventListener("DOMContentLoaded", function () {
     navButtons.appendChild(createNavButton("←", "prev"));
     navButtons.appendChild(createNavButton("→", "next"));
     document.body.appendChild(navButtons);
+
+    // Sidebar Navigation Functionality
+    const toggleButton = document.createElement("button");
+    toggleButton.innerHTML = '<img src="img/Compass.png" alt="Menu" class="icon-style"/>';
+    toggleButton.className = "toggle-button";
+    toggleButton.style.background = "transparent";
+    toggleButton.style.border = "none";
+    toggleButton.style.padding = "10px";
+    toggleButton.style.cursor = "pointer";
+    document.body.appendChild(toggleButton);
+
+    // Ensure sidebar is hidden initially
+    if (sidebar) {
+        sidebar.style.position = "fixed";
+        sidebar.style.left = "-200px";
+        sidebar.style.top = "0";
+        sidebar.style.transition = "left 0.3s ease, opacity 0.3s ease";
+        sidebar.style.opacity = "0";
+    }
+
+    // Toggle sidebar visibility
+    toggleButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const isOpen = sidebar.style.left === "0px";
+
+        if (isOpen) {
+            sidebar.style.left = "-200px";
+            sidebar.style.opacity = "0";
+        } else {
+            sidebar.style.left = "0";
+            sidebar.style.opacity = "1";
+        }
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener("click", function (e) {
+        const isOpen = sidebar.style.left === "0px";
+        const clickedOutside = !sidebar.contains(e.target) && e.target !== toggleButton;
+
+        if (isOpen && clickedOutside) {
+            sidebar.style.left = "-200px";
+            sidebar.style.opacity = "0";
+        }
+    });
+
+    // Ensure sidebar closes on touch outside
+    document.addEventListener("touchstart", function (e) {
+        const isOpen = sidebar.style.left === "0px";
+        const clickedOutside = !sidebar.contains(e.target) && e.target !== toggleButton;
+
+        if (isOpen && clickedOutside) {
+            sidebar.style.left = "-200px";
+            sidebar.style.opacity = "0";
+        }
+    });
 });

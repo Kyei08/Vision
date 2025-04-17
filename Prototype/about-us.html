@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vision | About Us</title>
-  <link rel="stylesheet" href="About page styles.css"> 
+  <link rel="stylesheet" href="css/About page styles.css"> 
   <link rel="icon" type="image/png" href="images/Vision-logo.png" />
 </head>
 <body class="about-page">
@@ -13,7 +13,7 @@
 
     <div class="main-content">
       <nav>
-        <a href="Home.html" >Home</a>
+        <a href="index.html" >Home</a>
         <a href="about-us.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="Credit.html">Credit</a>
@@ -34,7 +34,7 @@
       </section>
   </div>      
 
-  /* Our Values */
+  <!--/* Our Values */-->
   <section>
     <h2 style="color: white; text-align: center; font-size: 40px;"> Our Values </h2>
 
@@ -75,7 +75,7 @@
 
 
 <footer>
-  <p class="footer-center-text">&copy; 2025 Your Company Name. All rights reserved.</p>
+  <p class="footer-center-text">&copy; <span id="year"></span> Vision. All rights reserved.</p>
 </footer>
 
 
@@ -98,6 +98,7 @@
     }
 
     setInterval(createRipple, 800);
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
