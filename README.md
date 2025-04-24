@@ -1,4 +1,3 @@
-
 # 🌐 Vision Company Website
 
 Welcome to the **Vision** website repository. This project reflects our brand identity and mission —  
@@ -99,8 +98,8 @@ Make sure your code:
 
 We welcome contributions! Check out:
 
-- [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+- [CONTRIBUTING.md](./files/CONTRIBUTING.md)
+- [CODE_OF_CONDUCT.md](./files/CODE_OF_CONDUCT.md)
 
 To contribute:
 1. Fork the repo
@@ -118,24 +117,24 @@ If you discover a vulnerability or bug related to security:
 
 - **Do NOT** open a public issue.
 - Instead, email us privately at [vision.team@email.com](mailto:vision.team@email.com)
-- See [SECURITY.md](./SECURITY.md) for more info.
+- See [SECURITY.md](./files/SECURITY.md) for more info.
 
 ---
 
 ## 📜 License
 
 This project is licensed under the **MIT License**.  
-See [LICENSE](./LICENSE) for full terms. Contributors retain credit for their work.
+See [LICENSE](./files/LICENSE) for full terms. Contributors retain credit for their work.
 
 ---
 
 ## 📌 Project Resources
 
 - 📘 [README.md](./README.md) – You're here!
-- 🧾 [CONTRIBUTING.md](./CONTRIBUTING.md)
-- 🛡 [SECURITY.md](./SECURITY.md)
-- 🤝 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
-- 📄 [LICENSE](./LICENSE)
+- 🧾 [CONTRIBUTING.md](./files/CONTRIBUTING.md)
+- 🛡 [SECURITY.md](./files/SECURITY.md)
+- 🤝 [CODE_OF_CONDUCT.md](./files/CODE_OF_CONDUCT.md)
+- 📄 [LICENSE](./files/LICENSE)
 
 ---
 
@@ -151,4 +150,3 @@ See [LICENSE](./LICENSE) for full terms. Contributors retain credit for their wo
 > **We Build. We Innovate. We Lead.**
 
 Let's create something exceptional together!
-```
