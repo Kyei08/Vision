@@ -1,0 +1,100 @@
+/* Typography Styles */
+
+/* Display Styles */
+.display-2xl {
+  font-size: 72px;
+  line-height: 90px;
+  letter-spacing: -2%;
+}
+
+.display-xl {
+  font-size: 60px;
+  line-height: 72px;
+  letter-spacing: -2%;
+}
+
+.display-lg {
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: -2%;
+}
+
+.display-md {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -2%;
+}
+
+.display-sm {
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: -2%;
+}
+
+.display-xs {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -2%;
+}
+
+/* Body Text Styles */
+.body-xl {
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -2%;
+}
+
+.body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -2%;
+}
+
+.body-md {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -2%;
+}
+
+.body-sm {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -2%;
+}
+
+/* Caption Style */
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -2%;
+}
+
+/* Button Text Styles */
+.button-text-1 {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -2%;
+}
+
+.button-text-2 {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -2%;
+}
+
+/* Font Weight Scale */
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
