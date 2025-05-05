@@ -1,10 +1,16 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono,  Oswald  } from "next/font/google";
+import "./globals.css";  
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-oswald",
 });
 
 const geistMono = Geist_Mono({
@@ -13,14 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vision",
-  description: "Portfolio website",
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
+  title: "E-commerce Design",
+  description: "Modern e-commerce platform",
 };
 
 export default function RootLayout({
@@ -30,10 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable}`}>
+        <div className=" bg-background text-foreground">
+          <main className="">
+            {children}
+          </main>
+        </div>   
       </body>
     </html>
   );
