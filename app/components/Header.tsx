@@ -44,40 +44,40 @@ export default function Header() {
       </button>
 
       {/* Navigation - Vertical on both mobile and desktop */}
-      <nav 
+      <nav
         className={`bg-primary-800/90 w-[220px] h-screen pt-[60px] flex flex-col items-start fixed left-0 top-0 transition-transform duration-300 ease-in-out
           ${isMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="text-gray-100 no-underline px-5 py-4 w-full box-border font-semibold transition-colors hover:bg-[rgba(0,255,204,0.2)] hover:text-[#00ffcc]"
           onClick={() => setIsMenuOpen(false)}
         >
           Home
         </Link>
-        <Link 
-          href="/About" 
+        <Link
+          href="/About"
           className="text-gray-100 no-underline px-5 py-4 w-full box-border font-semibold transition-colors hover:bg-[rgba(0,255,204,0.2)] hover:text-[#00ffcc]"
           onClick={() => setIsMenuOpen(false)}
         >
           About
         </Link>
-        <Link 
-          href="/Projects" 
+        <Link
+          href="/Projects"
           className="text-gray-100 no-underline px-5 py-4 w-full box-border font-semibold transition-colors hover:bg-[rgba(0,255,204,0.2)] hover:text-[#00ffcc]"
           onClick={() => setIsMenuOpen(false)}
         >
           Projects
         </Link>
-        <Link 
-          href="/Credits" 
+        <Link
+          href="/Credits"
           className="text-gray-100 no-underline px-5 py-4 w-full box-border font-semibold transition-colors hover:bg-[rgba(0,255,204,0.2)] hover:text-[#00ffcc]"
           onClick={() => setIsMenuOpen(false)}
         >
           Credit
         </Link>
-        <Link 
-          href="/Contact" 
+        <Link
+          href="/Contact"
           className="text-gray-100 no-underline px-5 py-4 w-full box-border font-semibold transition-colors hover:bg-[rgba(0,255,204,0.2)] hover:text-[#00ffcc]"
           onClick={() => setIsMenuOpen(false)}
         >
@@ -87,7 +87,7 @@ export default function Header() {
 
       {/* Overlay for mobile - Only visible when menu is open */}
       {isMenuOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-black/50 z-40"
           onClick={() => setIsMenuOpen(false)}
         />
