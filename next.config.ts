@@ -6,14 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
     //  remote patterns goes here 
     ],
-  },
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
-  ],
-  "parser": "@typescript-eslint/parser"
+  }, 
 };
 
 export default nextConfig;
