@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Water Ripple Background with Left Sidebar Navigation & Credits</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex; /* Use flexbox for overall layout */
+            min-height: 100vh;
+            background-color: #000;
+            overflow: hidden;
+            font-family: sans-serif; /* Added a default font */
+            color: #fff; /* Default text color */
+        }
+
+        .ripple-background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(#5E7D7E, #667871); /* Light Blue to Sky Blue */
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .ripple {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            animation: ripple-animation 6s infinite;
+            opacity: 0;
+        }
+
+        @keyframes ripple-animation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(2);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        nav {
+            background-color: rgba(30, 30, 30, 0.8);
+            width: 200px; /* Adjust sidebar width as needed */
+            height: 100vh; /* Full height sidebar */
+            padding-top: 60px; /* Add some top padding for spacing */
+            box-sizing: border-box;
+            z-index: 10;
+            display: flex;
+            flex-direction: column; /* Stack links vertically */
+            align-items: flex-start; /* Align links to the left in the sidebar */
+        }
+
+        nav a {
+            color: #eee;
+            text-decoration: none;
+            padding: 15px 20px; /* Add padding to links for better touch targets */
+            width: 100%; /* Make links take full width of sidebar */
+            box-sizing: border-box;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 255, 204, 0.2); /* Highlight on hover */
+            color: #00ffcc;
+        }
+
+        .content-wrapper {
+            flex-grow: 1; /* Allow content to take remaining width */
+            padding: 20px; /* Add some padding around the content area */
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            z-index: 1;
+        }
+
+        .credits-container {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center; /* Center the main heading */
+        }
+
+        .credits-container h2 {
+            color: #eee;
+            margin-bottom: 20px;
+        }
+
+        .credits-container .container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px; /* Match original container width */
+            margin: 0 auto; /* Center the inner container */
+        }
+
+        .credits-container .card {
+            background-color: rgba(30, 30, 30, 0.8); /* Darker card background */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 300px;
+            box-sizing: border-box;
+            text-align: left; /* Align text within cards to the left */
+        }
+
+        .credits-container h3 {
+            color: #00ffcc; /* Teal heading for emphasis */
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center; /* Center card subheadings */
+        }
+
+        .credits-container p {
+            color: #ddd;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* Add to the end of styles.css */
+        .page-nav-buttons button {
+            padding: 10px 15px;
+            background: rgba(0, 255, 204, 0.2);
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            color: #00ffcc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-nav-buttons button:hover {
+            background: rgba(0, 255, 204, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .page-nav-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .page-nav-buttons button {
+                padding: 8px 12px;
+            }
+
+            .credits-container .container {
+                flex-direction: column; /* Stack cards on smaller screens */
+                align-items: center;
+                gap: 20px;
+            }
+
+            .credits-container .card {
+                width: 100%; /* Make cards full width on smaller screens */
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ripple-background" id="rippleBackground">
+    </div>
+
+    <nav>
+        <a href="index.html" >Home</a>
+        <a href="about-us.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="Credit.html">Credit</a>
+        <a href="Contact-section01.html" >Contact</a>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="credits-container">
+            <h2>Credits & Acknowledgments</h2>
+            <div class="container">
+                <div class="card">
+                    <h3>Contributors</h3>
+                    <h4>Designers</h4>
+                    <p>John Doe</p>
+                    <p>Jane Smith</p>
+                    <p>Mike Johnson</p>
+                    <h4>Frontend Developers</h4>
+                    <p>Emily Davis</p>
+                    <p>Chris Brown</p>
+                    <p>Sarah Wilson</p>
+                    <h4>Backend Developers</h4>
+                    <p>David Lee</p>
+                    <p>Laura Martinez</p>
+                    <p>James Taylor</p>
+                </div>
+                <div class="card">
+                    <h3>Special Thanks</h3>
+                    <p>We would like to thank our partners and supporters ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rippleBackground = document.getElementById('rippleBackground');
+        const numberOfRipples = 10; // Adjust as needed
+
+        function createRipple() {
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+
+            // Set random initial position
+            const size = Math.random() * 100; // Vary initial size a bit
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${Math.random() * 100}vw`;
+            ripple.style.top = `${Math.random() * 100}vh`;
+
+            // Set random animation delay for a staggered effect
+            ripple.style.animationDelay = `${Math.random() * 5}s`;
+
+            rippleBackground.appendChild(ripple);
+
+            // Remove the ripple after the animation finishes to keep the DOM clean
+            setTimeout(() => {
+                ripple.remove();
+            }, 6000); // Matches the animation duration
+        }
+
+        // Create initial ripples
+        for (let i = 0; i < numberOfRipples; i++) {
+            createRipple();
+        }
+
+        // Continue creating ripples at intervals
+        setInterval(createRipple, 750);
+        // Adjust the interval to control ripple frequency
+
+        // Add page navigation functionality
+const pages = [
+    "index.html",
+    "projects.html",
+    "water-ripple-background01.html",
+    "credits.html"
+];
+
+// Get current page index
+let currentPage = pages.indexOf(window.location.pathname.split('/').pop());
+if (currentPage === -1) currentPage = 0;
+
+// Keyboard navigation
+document.addEventListener("keydown", function(e) {
+    // Only navigate if sidebar is closed
+    const sidebar = document.querySelector('nav'); // Get the nav element
+    if (sidebar.style.left !== "0px") {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+            // Next page
+            const nextPage = (currentPage + 1) % pages.length;
+            window.location.href = pages[nextPage];
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            // Previous page
+            const prevPage = (currentPage - 1 + pages.length) % pages.length;
+            window.location.href = pages[prevPage];
+        }
+    }
+});
+
+// Touch swipe for mobile
+let touchStartX = 0;
+document.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener("touchend", function(e) {
+    const touchEndX = e.changedTouches[0].screenX;
+    const sidebar = document.querySelector('nav'); // Get the nav element
+    if (sidebar.style.left !== "0px") { // Only if sidebar is closed
+        if (touchEndX < touchStartX - 50) { // Swipe left
+            const nextPage = (currentPage + 1) % pages.length;
+            window.location.href = pages[nextPage];
+        } else if (touchEndX > touchStartX + 50) { // Swipe right
+            const prevPage = (currentPage - 1 + pages.length) % pages.length;
+            window.location.href = pages[prevPage];
+        }
+    }
+}, false);
+
+// Add navigation buttons to each page
+const navButtons = document.createElement("div");
+navButtons.className = "page-nav-buttons";
+navButtons.style.position = "fixed";
+navButtons.style.bottom = "20px";
+navButtons.style.right = "20px";
+navButtons.style.zIndex = "100";
+navButtons.style.display = "flex";
+navButtons.style.gap = "10px";
+
+const prevButton = document.createElement("button");
+prevButton.innerHTML = "←";
+prevButton.style.padding = "10px 15px";
+prevButton.style.background = "rgba(0, 255, 204, 0.2)";
+prevButton.style.border = "1px solid #00ffcc";
+prevButton.style.borderRadius = "5px";
+prevButton.style.color = "#00ffcc";
+prevButton.style.cursor = "pointer";
+prevButton.addEventListener("click", function() {
+    const prevPage = (currentPage - 1 + pages.length) % pages.length;
+    window.location.href = pages[prevPage];
+});
+
+const nextButton = document.createElement("button");
+nextButton.innerHTML = "→";
+nextButton.style.padding = "10px 15px";
+nextButton.style.background = "rgba(0, 255, 204, 0.2)";
+nextButton.style.border = "1px solid #00ffcc";
+nextButton.style.borderRadius = "5px";
+nextButton.style.color = "#00ffcc";
+nextButton.style.cursor = "pointer";
+nextButton.addEventListener("click", function() {
+    const nextPage = (currentPage + 1) % pages.length;
+    window.location.href = pages[nextPage];
+});
+
+navButtons.appendChild(prevButton);
+navButtons.appendChild(nextButton);
+document.body.appendChild(navButtons);
+
+
+    </script>
+</body>
+</html>

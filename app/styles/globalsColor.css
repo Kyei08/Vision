@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Primary Colors - Midnight Green */
+    --color-primary-50: #d9fafd;
+    --color-primary-100: #adf4fb;
+    --color-primary-200: #1ae2f4;
+    --color-primary-300: #0cc1d1;
+    --color-primary-400: #0794a1;
+    --color-primary-500: #033a3f;
+    --color-primary-600: #04363a;
+    --color-primary-700: #022d31;
+    --color-primary-800: #031f22;
+    --color-primary-900: #031f22;
+    --color-primary-950: #000000;
+
+    /* Secondary Colors - Giants Orange */
+    --color-secondary-50: #fff4f1;
+    --color-secondary-100: #ffece5;
+    --color-secondary-200: #ffd2c1;
+    --color-secondary-300: #ffb89e;
+    --color-secondary-400: #ff936b;
+    --color-secondary-500: #ff5d22;
+    --color-secondary-600: #f54200;
+    --color-secondary-700: #db3a00;
+    --color-secondary-800: #b33000;
+    --color-secondary-900: #852300;
+    --color-secondary-950: #5c1800;
+
+    /* Gray Scale - Platinum Based */
+    --color-gray-50: #ffffff;
+    --color-gray-100: #fafafa;
+    --color-gray-200: #f5f5f5;
+    --color-gray-300: #eaeaea;
+    --color-gray-400: #d4d4d4;
+    --color-gray-500: #a3a3a3;
+    --color-gray-600: #737373;
+    --color-gray-700: #525252;
+    --color-gray-800: #404040;
+    --color-gray-900: #262626;
+    --color-gray-950: #202020;
+
+    /* Red Scale */
+    --color-red-50: #fbf8f7;
+    --color-red-100: #fcf2f2;
+    --color-red-200: #fde5e4;
+    --color-red-300: #ffd3d1;
+    --color-red-400: #ffc4c2;
+    --color-red-500: #ffb3b1;
+    --color-red-600: #f99d9c;
+    --color-red-700: #f28080;
+    --color-red-800: #f5003d;
+    --color-red-900: #d4002a;
+    --color-red-950: #6e0015;
+
+    /* Green Scale */
+    --color-green-50: #f6faf7;
+    --color-green-100: #f0f6f1;
+    --color-green-200: #e2f2e4;
+    --color-green-300: #d3ecd5;
+    --color-green-400: #c0e4c4;
+    --color-green-500: #c0e4c4;
+    --color-green-600: #8bce92;
+    --color-green-700: #56b56a;
+    --color-green-800: #34a853;
+    --color-green-900: #0a7a32;
+    --color-green-950: #0a3423;
+
+    /* Yellow Scale */
+    --color-yellow-50: #fefce8;
+    --color-yellow-100: #fef9c3;
+    --color-yellow-200: #fef08a;
+    --color-yellow-300: #fde047;
+    --color-yellow-400: #facc15;
+    --color-yellow-500: #eab308;
+    --color-yellow-600: #ca8a04;
+    --color-yellow-700: #a16207;
+    --color-yellow-800: #854d0e;
+    --color-yellow-900: #713f12;
+    --color-yellow-950: #422006;
+
+    /* Blue Scale */
+    --color-blue-50: #eff6ff;
+    --color-blue-100: #dbeafe;
+    --color-blue-200: #bfdbfe;
+    --color-blue-300: #93c5fd;
+    --color-blue-400: #60a5fa;
+    --color-blue-500: #3b82f6;
+    --color-blue-600: #2563eb;
+    --color-blue-700: #1d4ed8;
+    --color-blue-800: #1e40af;
+    --color-blue-900: #1e3a8a;
+
+    /* Theme variables - Light Mode (Platinum) */
+    --color-background: 0 0% 92%; /* Platinum #EAEAEA */
+    --color-foreground: 0 0% 13%;
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 0 0% 13%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 0 0% 13%;
+    --color-primary: 187 91% 13%; /* Midnight Green #033A3F */
+    --color-primary-foreground: 0 0% 100%;
+    --color-secondary: 15 100% 57%; /* Giants Orange #FF5D22 */
+    --color-secondary-foreground: 0 0% 100%;
+    --color-muted: 0 0% 92%;
+    --color-muted-foreground: 187 91% 13%;
+    --color-accent: 15 100% 57%;
+    --color-accent-foreground: 0 0% 100%;
+    --color-destructive: 0 84% 60%;
+    --color-destructive-foreground: 0 0% 100%;
+    --color-border: 0 0% 92%;
+    --color-input: 0 0% 92%;
+    --color-ring: 187 91% 13%;
+    --color-radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode - Eerie Black */
+    --color-background: 0 0% 13%; /* Eerie Black #202020 */
+    --color-foreground: 0 0% 95%;
+    --color-card: 0 0% 13%;
+    --color-card-foreground: 0 0% 95%;
+    --color-popover: 0 0% 13%;
+    --color-popover-foreground: 0 0% 95%;
+    --color-primary: 187 91% 13%; /* Keeping Midnight Green as primary */
+    --color-primary-foreground: 0 0% 95%;
+    --color-secondary: 15 100% 57%; /* Keeping Giants Orange as secondary */
+    --color-secondary-foreground: 0 0% 95%;
+    --color-muted: 0 0% 13%;
+    --color-muted-foreground: 0 0% 63%;
+    --color-accent: 15 100% 57%;
+    --color-accent-foreground: 0 0% 95%;
+    --color-destructive: 0 84% 60%;
+    --color-destructive-foreground: 0 0% 95%;
+    --color-border: 0 0% 20%;
+    --color-input: 0 0% 20%;
+    --color-ring: 187 91% 13%;
+  }
+}
