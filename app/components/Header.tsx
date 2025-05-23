@@ -10,6 +10,7 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  
   return (
     <header className="fixed w-full bg-white top-0 left-0 z-50">
       {/* Mobile Menu Button - Only visible on mobile */}
@@ -42,6 +43,7 @@ export default function Header() {
           )}
         </svg>
       </button>
+      
 
       {/* Navigation - Vertical on both mobile and desktop */}
       <nav
